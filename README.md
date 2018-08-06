@@ -4,6 +4,7 @@
 
 Ethereum mining container with NVIDIA GPUs.
 
+# Setup
 
 # Usage
 
@@ -20,4 +21,5 @@ Docker container requires environmental variables bellow for specifing your mini
 ```
 
 # References
-
+* [nvidia-docker](https://github.com/NVIDIA/nvidia-docker)
+* [ethminer](https://github.com/ethereum-mining/ethminer)
