@@ -1,0 +1,33 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nanopool-eth-env
+data:
+  WALLET: <YOUR_ETH_WALLET>
+  WORKER: <WORKER_NAME>
+  NANOPOOL_SERVER: <NANOPOOL_SERVER>
+  EMAIL: <EMAIL>
+  API_PORT: <API_PORT(String)>
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ethminer
+  labels:
+    name: ethminer
+spec:
+  selector:
+    matchLabels:
+      name: ethminer
+  template:
+    metadata:
+      labels:
+       name: ethminer
+    spec:
+      containers:
+      - name: ethminer
+        image: hichtakk/ethminer-cuda:0.14.0
+        envFrom:
+        - configMapRef:
+            name: nanopool-eth-env
+
